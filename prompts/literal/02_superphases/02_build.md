@@ -2,9 +2,9 @@
 **When not to use**: When performing planning, design, or scoping — use “Plan” instead.
 
 Let’s begin the **Build Phase** for this supermodule using the **Consolidated Implementation Template**.  
-This phase combines **Develop**, **UI Review**, and **Debug** steps into one flow. Complete each step first before moving to the next step.
+This phase combines **Build**, **UI Review**, and **Debug** steps into one flow. Complete each step first before moving to the next step.
 
-Let’s begin the Develop Step using the **Develop Loop Template**.  
+Let’s begin the Develop Step using the **Build Loop Template**.  
 Outline your implementation approach first, then build features step-by-step.  
 Verify functionality incrementally — test each major part before moving to the next.  
 Pause for confirmation if any interpretation or assumption is unclear.
@@ -22,7 +22,7 @@ Generate a regression checklist referencing prior modules and ensure legacy feat
 Store the resulting report under `/docs/operations/phases/phase-XX-02-build.md`. New work goes into `/docs/operations/phases/recent/`; move completed artifacts together to `/docs/operations/phases/archive/`. If the current supermodule or module does not have a number, assign it the next available phase number from the development checklist.
 
 **System Template references:**  
-- Develop Loop Template: `/prompts/system/04_building_loop.md`  
+- Build Loop Template: `/prompts/system/04_build_loop.md`  
 - UI Review Loop Template: `/prompts/system/05_ui_review_loop.md`  
 - Debugging Loop Template: `/prompts/system/06_debugging_loop.md`  
 
