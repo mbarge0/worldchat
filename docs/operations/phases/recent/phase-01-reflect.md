@@ -1,3 +1,0 @@
-
-## Reflect
-Dummy Reflect content.
