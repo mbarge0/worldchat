@@ -99,4 +99,30 @@ Setup & Auth was implemented cleanly with hardened rules and passing unit tests.
 ### Summary Statement
 Auth and onboarding groundwork is complete with solid rules and unit coverage. After emulator and device validations, the project is ready to enter Messaging Core with a stable identity layer.
 
+---
 
+## Handoff Update — Auth & Router Stabilization (2025-10-21)
+
+### Changes Since Initial Handoff
+- Adopted Expo Router as the navigation system and restructured routes under `app/`.
+- `app/_layout.tsx` now:
+  - Initializes Firebase once
+  - Wraps with `AuthProvider`
+  - Shows a loading screen while Firebase initializes
+  - Renders login when `user === null`, and `<Slot />` when authenticated
+- `app/auth/login.tsx` uses `signInWithEmailAndPassword`; on success navigates via `useRouter` to a placeholder protected route.
+- Verified `config/firebase.ts` reads `EXPO_PUBLIC_FIREBASE_*` and is singleton-safe for Expo SDK 54.
+- Aligned React/RN versions to resolve iOS crash (React 19.1.0 + RN 0.81.x), retaining compatibility with `expo-router` and `@react-navigation/*`.
+
+### Current Post-Login Behavior
+- After login, the app redirects to `/c/123`. If unmatched, add an Expo Router screen:
+  - `app/c/[canvasId].tsx` (or `app/c/[canvasId]/index.tsx`) as the placeholder conversations/canvas route.
+- For Messaging Core, replace `/c/123` with the Conversation List as the default authenticated landing route.
+
+### Testing Notes
+- iOS simulator shows the login screen at launch and real login succeeds with Firebase credentials.
+- To test cleanly: `pnpm expo start -c`, then login with a test account (Auth → Email/Password enabled).
+
+### Next Steps for Phase 02 (Messaging Core)
+- Implement Conversation List and Chat routes; make Conversation List the default authenticated landing route.
+- Add guarded stacks/tabs; keep `AuthProvider` at root; optional branded splash during init.

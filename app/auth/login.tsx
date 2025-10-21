@@ -1,20 +1,36 @@
+import { useRouter } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, Button, Text, TextInput, View } from "react-native";
 import { auth } from "../../config/firebase";
 
 export default function LoginScreen() {
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+    const [error, setError] = useState<string>("");
+    const [submitting, setSubmitting] = useState(false);
 
     const handleLogin = async () => {
+        setSubmitting(true);
+        setError("");
         try {
-            console.log("🔑 Attempting login:", email);
-            await signInWithEmailAndPassword(auth, email, password);
+            await signInWithEmailAndPassword(auth, email.trim(), password);
+            // Navigate to a placeholder protected route after successful login
+            router.replace("/c/123");
         } catch (err: any) {
-            console.error("❌ Login error:", err.message);
-            setError(err.message);
+            const code = err?.code || "auth/unknown";
+            const message =
+                code === "auth/invalid-credential" || code === "auth/wrong-password"
+                    ? "Incorrect email or password."
+                    : code === "auth/user-not-found"
+                        ? "No account found for that email."
+                        : code === "auth/too-many-requests"
+                            ? "Too many attempts. Try again later."
+                            : err?.message || "Login failed. Please try again.";
+            setError(message);
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -25,17 +41,22 @@ export default function LoginScreen() {
                 placeholder="Email"
                 value={email}
                 onChangeText={setEmail}
-                style={{ borderWidth: 1, marginBottom: 10, padding: 8 }}
+                autoCapitalize="none"
+                keyboardType="email-address"
+                textContentType="username"
+                style={{ borderWidth: 1, borderColor: '#ddd', borderRadius: 8, marginBottom: 10, padding: 12 }}
             />
             <TextInput
                 placeholder="Password"
                 value={password}
                 secureTextEntry
                 onChangeText={setPassword}
-                style={{ borderWidth: 1, marginBottom: 10, padding: 8 }}
+                textContentType="password"
+                style={{ borderWidth: 1, borderColor: '#ddd', borderRadius: 8, marginBottom: 10, padding: 12 }}
             />
-            <Button title="Login" onPress={handleLogin} />
-            {error ? <Text style={{ color: "red", marginTop: 10 }}>{error}</Text> : null}
+            <Button title={submitting ? "Signing in..." : "Sign in"} onPress={handleLogin} disabled={submitting} />
+            {submitting ? <ActivityIndicator style={{ marginTop: 12 }} /> : null}
+            {error ? <Text style={{ color: "#b00020", marginTop: 10 }}>{error}</Text> : null}
         </View>
     );
 }

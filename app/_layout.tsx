@@ -1,13 +1,17 @@
 import { Slot } from "expo-router";
 import { Text, View } from "react-native";
-import LoginScreen from "../app/auth/login";
-import { AuthProvider, useAuth } from "../app/contexts/AuthContext";
 import "../config/firebase";
+import { AuthProvider, useAuth } from "../contexts/AuthContext";
+import LoginScreen from "./auth/login";
 
 function LayoutInner() {
   const { user, loading } = useAuth();
 
-  if (loading) return <View><Text>Loading...</Text></View>;
+  if (loading) return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Initializing...</Text>
+    </View>
+  );
   if (!user) return <LoginScreen />;
   return <Slot />;
 }
