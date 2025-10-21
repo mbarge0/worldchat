@@ -1,5 +1,10 @@
 {
-  "ios": {
-    "bundleIdentifier": "com.anonymous.worldchat"
+  "expo": {
+    "name": "WorldChat",
+    "slug": "worldchat",
+    "scheme": "worldchat",
+    "ios": {
+      "bundleIdentifier": "com.anonymous.worldchat"
+    }
   }
 }
