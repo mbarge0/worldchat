@@ -1,0 +1,52 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="390" height="844" fill="#FFFFFF"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="390" height="88" fill="#FFFFFF"/>
+  <text x="20" y="56" font-family="SF Pro, Roboto, Arial" font-size="20" font-weight="600" fill="#0F172A">Messages</text>
+  <!-- Plus action -->
+  <circle cx="350" cy="50" r="18" fill="#2563EB"/>
+  <rect x="347" y="49" width="6" height="2" fill="#FFFFFF"/>
+  <rect x="350" y="46" width="2" height="6" fill="#FFFFFF"/>
+
+  <!-- Search -->
+  <rect x="16" y="96" rx="12" ry="12" width="358" height="40" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <circle cx="32" cy="116" r="6" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="36" y1="120" x2="42" y2="126" stroke="#94A3B8" stroke-width="2"/>
+  <text x="54" y="121" font-family="SF Pro, Roboto, Arial" font-size="14" fill="#9CA3AF">Search messages or users</text>
+
+  <!-- List Item 1 -->
+  <circle cx="36" cy="166" r="20" fill="#E5E7EB"/>
+  <!-- presence dot -->
+  <circle cx="50" cy="180" r="5" fill="#10B981" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="64" y="158" font-family="SF Pro, Roboto, Arial" font-size="16" font-weight="600" fill="#0F172A">Alex Johnson</text>
+  <text x="64" y="178" font-family="SF Pro, Roboto, Arial" font-size="14" fill="#475569">Hey! Are you joining…</text>
+  <text x="302" y="158" font-family="SF Pro, Roboto, Arial" font-size="12" fill="#94A3B8">3:24 PM</text>
+  <!-- unread badge -->
+  <rect x="332" y="165" rx="9" ry="9" width="28" height="18" fill="#38BDF8"/>
+  <text x="344" y="178" font-family="SF Pro, Roboto, Arial" font-size="12" font-weight="600" text-anchor="middle" fill="#FFFFFF">2</text>
+
+  <!-- Divider -->
+  <line x1="16" y1="194" x2="374" y2="194" stroke="#E5E7EB"/>
+
+  <!-- List Item 2 -->
+  <circle cx="36" cy="226" r="20" fill="#E5E7EB"/>
+  <circle cx="50" cy="240" r="5" fill="#94A3B8" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="64" y="218" font-family="SF Pro, Roboto, Arial" font-size="16" font-weight="600" fill="#0F172A">Maya Patel</text>
+  <text x="64" y="238" font-family="SF Pro, Roboto, Arial" font-size="14" fill="#475569">Sounds good!</text>
+  <text x="300" y="218" font-family="SF Pro, Roboto, Arial" font-size="12" fill="#94A3B8">12:08 PM</text>
+
+  <line x1="16" y1="254" x2="374" y2="254" stroke="#E5E7EB"/>
+
+  <!-- List Item 3 -->
+  <circle cx="36" cy="286" r="20" fill="#E5E7EB"/>
+  <circle cx="50" cy="300" r="5" fill="#10B981" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="64" y="278" font-family="SF Pro, Roboto, Arial" font-size="16" font-weight="600" fill="#0F172A">Diego Rivera</text>
+  <text x="64" y="298" font-family="SF Pro, Roboto, Arial" font-size="14" fill="#475569">Let’s catch up later</text>
+  <text x="310" y="278" font-family="SF Pro, Roboto, Arial" font-size="12" fill="#94A3B8">Yesterday</text>
+
+  <!-- Safe area bottom hint -->
+  <rect x="170" y="820" rx="3" ry="3" width="50" height="6" fill="#E5E7EB"/>
+</svg>
+

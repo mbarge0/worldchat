@@ -1,0 +1,89 @@
+{
+    "MessageBubble": {
+        "variants": {
+            "role": [
+                "sent",
+                "received"
+            ],
+            "status": [
+                "sending",
+                "sent",
+                "delivered",
+                "read"
+            ],
+            "type": [
+                "text",
+                "image"
+            ]
+        },
+        "props": {
+            "maxWidthPct": 78,
+            "padding": {
+                "x": 12,
+                "y": 10
+            },
+            "radius": 16,
+            "gapY": 8,
+            "textSizes": {
+                "body": 16,
+                "caption": 12
+            },
+            "colorsRef": {
+                "sentBg": "{colors.sentBubble}",
+                "recvBg": "{colors.receivedBubble}",
+                "sentText": "{colors.sentText}",
+                "recvText": "{colors.receivedText}"
+            },
+            "statusIcons": {
+                "sending": "Check",
+                "sent": "Check",
+                "delivered": "CheckCheck",
+                "read": "CheckCheckBlue"
+            }
+        }
+    },
+    "MessageInput": {
+        "props": {
+            "radius": 12,
+            "minHeight": 44,
+            "maxLines": 4,
+            "leftIcon": "Plus",
+            "rightIcon": "Send",
+            "placeholder": "Type a message...",
+            "colorsRef": {
+                "bg": "{colors.background}",
+                "border": "{colors.border}",
+                "placeholder": "#9CA3AF"
+            }
+        }
+    },
+    "ConversationListItem": {
+        "props": {
+            "avatarSize": 40,
+            "avatarRadius": 20,
+            "nameSize": 16,
+            "subtitleSize": 14,
+            "presenceDot": {
+                "size": 8,
+                "colorRef": "{colors.presence}"
+            },
+            "unreadBadge": {
+                "minWidth": 20,
+                "height": 18,
+                "colorRef": "{colors.accentBadge}"
+            },
+            "padding": {
+                "x": 16,
+                "y": 12
+            }
+        }
+    },
+    "TypingIndicator": {
+        "props": {
+            "dotCount": 3,
+            "dotSize": 6,
+            "durationMs": 250,
+            "easing": "ease-in-out"
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "$schema": "https://figma.com/tokens.schema.json",
+    "metadata": {
+        "name": "WorldChat SM2 Tokens — Dark",
+        "version": "1.0"
+    },
+    "colors": {
+        "sentBubble": "#1D4ED8",
+        "receivedBubble": "#111827",
+        "sentText": "#FFFFFF",
+        "receivedText": "#E5E7EB",
+        "presence": "#10B981",
+        "accentBadge": "#38BDF8",
+        "background": "#0B0D10",
+        "surface": "#12161C",
+        "border": "#273142",
+        "textPrimary": "#E5E7EB",
+        "textMuted": "#94A3B8"
+    },
+    "radius": {
+        "bubble": 16,
+        "input": 12,
+        "avatar": 20
+    },
+    "spacing": {
+        "grid": 4,
+        "bubblePaddingX": 12,
+        "bubblePaddingY": 10,
+        "screenPadding": 16
+    },
+    "motion": {
+        "send": {
+            "durationMs": 120
+        },
+        "receive": {
+            "durationMs": 120
+        }
+    }
+}
