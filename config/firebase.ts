@@ -8,7 +8,9 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FirebaseApp, getApp, getApps, initializeApp } from 'firebase/app';
-import { Auth, getAuth, getReactNativePersistence, initializeAuth } from 'firebase/auth';
+import { Auth, getAuth, initializeAuth } from 'firebase/auth';
+// @ts-ignore - getReactNativePersistence is available in RN builds via firebase/auth
+import { getReactNativePersistence } from 'firebase/auth';
 import { Firestore, getFirestore } from 'firebase/firestore';
 
 // Prefer Expo's public env vars, fall back to NEXT_PUBLIC_ for hybrid setups
@@ -46,6 +48,7 @@ const app: FirebaseApp = getApps().length ? getApp() : initializeApp(firebaseCon
 let auth: Auth;
 try {
     auth = initializeAuth(app, {
+        // @ts-ignore - Type definitions may not include RN helper, runtime is valid
         persistence: getReactNativePersistence(AsyncStorage),
     });
 } catch {

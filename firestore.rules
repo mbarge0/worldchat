@@ -3,17 +3,62 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // This rule allows anyone with your Firestore database reference to view, edit,
-    // and delete all data in your Firestore database. It is useful for getting
-    // started, but it is configured to expire after 30 days because it
-    // leaves your app open to attackers. At that time, all client
-    // requests to your Firestore database will be denied.
-    //
-    // Make sure to write security rules for your app before that time, or else
-    // all client requests to your Firestore database will be denied until you Update
-    // your rules
-    match /{document=**} {
-      allow read, write: if request.time < timestamp.date(2025, 11, 12);
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isSelf(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Helper: supports participants stored as array of UIDs or map of { uid: true }
+    function isParticipant(conv) {
+      return (
+        (conv.data.participants is list && request.auth.uid in conv.data.participants) ||
+        (conv.data.participants is map && conv.data.participants[request.auth.uid] == true)
+      );
+    }
+
+    function isConversationParticipant(conversationId) {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/conversations/$(conversationId)) &&
+        isParticipant(get(/databases/$(database)/documents/conversations/$(conversationId)));
+    }
+
+    // Users: self read/write only
+    match /users/{userId} {
+      allow read: if isSignedIn() && isSelf(userId);
+      allow create: if isSignedIn() && isSelf(userId);
+      allow update: if isSignedIn() && isSelf(userId);
+      allow delete: if false; // prevent client-side deletes of user profile
+    }
+
+    // Conversations: readable to participants; creation requires including creator as participant
+    match /conversations/{conversationId} {
+      allow read: if isSignedIn() && isParticipant(resource);
+      allow create: if isSignedIn() && isParticipant(request.resource);
+      allow update: if isSignedIn() && isParticipant(resource);
+      allow delete: if false;
+
+      // Messages subcollection
+      match /messages/{messageId} {
+        allow read: if isConversationParticipant(conversationId);
+        // Create only by participants and only for own-sent messages
+        allow create: if isConversationParticipant(conversationId)
+                      && request.resource.data.senderId == request.auth.uid;
+
+        // Allow limited updates for read receipts by participants
+        allow update: if isConversationParticipant(conversationId)
+                      && request.resource.data.diff(resource.data).changedKeys().hasOnly(['readBy', 'status']);
+
+        allow delete: if false;
+      }
+    }
+
+    // Translation cache: readable by any authenticated user; client cannot write
+    match /translationCache/{cacheId} {
+      allow read: if isSignedIn();
+      allow write: if false;
     }
   }
 }

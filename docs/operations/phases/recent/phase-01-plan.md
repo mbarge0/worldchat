@@ -1,2 +1,0 @@
-## Start
-Dummy Plan content.

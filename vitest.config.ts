@@ -12,6 +12,7 @@ export default defineConfig({
             'tests/e2e/**',
             'node_modules/**',
             '.next/**',
+            'tools/foundry-motion/**',
         ],
     },
     resolve: {

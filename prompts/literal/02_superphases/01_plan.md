@@ -27,7 +27,8 @@ Store the resulting report under `/docs/operations/phases/recent/phase-XX-01-pla
 - Design Loop Template: `/prompts/system/03_design_loop.md`  
 
 **Previous phase documentation:** `/docs/operations/phases/phase-XX-06-handoff.md`  
-**PRD, architecture, and dev checklist:** `/docs/foundation/`  
+**All foundation documents:** `/docs/foundation/`  
 **Regression manifest:** `/docs/operations/regression/00_master_regression_manifest.md`
+**UI Guidelines**: `/docs/operations/ui-guidelines.md`
 
 We’re going to do **Phase XX**, which in the dev checklist corresponds to the next planned supermodule.

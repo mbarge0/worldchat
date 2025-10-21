@@ -10,4 +10,4 @@ When you get confirmation, write the resulting file to:
 
 **Regression Checklist Generator reference:** /prompts/system/utilities/10_regression_manifest.md
 
-PRD, architecture, and dev checklist documents are located in /docs/foundation folder.
+Project Overview, PRD, tech stack, architecture, user flow, and dev checklist are located in `/docs/foundation/`  
