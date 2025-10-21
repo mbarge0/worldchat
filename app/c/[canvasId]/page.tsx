@@ -1,10 +1,21 @@
-export default function CanvasPage() {
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { signOut } from "firebase/auth";
+import { Button, Text, View } from "react-native";
+import { auth } from "../../../config/firebase"; // <-- fixed path
+
+export default function CanvasScreen() {
+    const { canvasId } = useLocalSearchParams();
+    const router = useRouter();
+
+    const handleLogout = async () => {
+        await signOut(auth);
+        router.replace("/auth/login");
+    };
+
     return (
-        <div className="min-h-screen flex items-center justify-center p-12">
-            <div className="max-w-xl text-center space-y-4">
-                <h1 className="text-xl font-semibold">Canvas Placeholder</h1>
-                <p className="text-sm text-gray-600">This route is reserved for downstream apps. The Collab Canvas implementation has been removed.</p>
-            </div>
-        </div>
-    )
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <Text style={{ fontSize: 24, marginBottom: 20 }}>🎨 Canvas {canvasId}</Text>
+            <Button title="Log out" onPress={handleLogout} />
+        </View>
+    );
 }

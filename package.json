@@ -43,7 +43,7 @@
     "@t3-oss/env-nextjs": "^0.13.8",
     "axios": "^1.12.2",
     "clsx": "^2.1.1",
-    "expo": "^54.0.13",
+    "expo": "54.0.15",
     "expo-image-picker": "^17.0.8",
     "expo-linking": "^8.0.8",
     "expo-notifications": "^0.32.12",

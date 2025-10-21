@@ -1,4 +1,5 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "target": "esnext",
     "lib": [
@@ -11,19 +12,19 @@
     "strict": true,
     "noEmit": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "types": [
       "expo-router/types"
     ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "*"
-      ]
-    }
+    "baseUrl": "."
   },
-  "extends": "expo/tsconfig.base"
+  "include": [
+    "app",
+    "config",
+    "types",
+    "index.js"
+  ]
 }
